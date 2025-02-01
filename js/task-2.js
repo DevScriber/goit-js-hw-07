@@ -31,21 +31,14 @@ galleryList.style.display = 'flex';
 galleryList.style.flexWrap = 'wrap';
 galleryList.style.gap = '48px 24px';
 
+let galleryHTML = '';
+
 for (let image of images) {
-  
-  const elementOfGallery = document.createElement('li');
-  const picture = document.createElement('img');
-
-  galleryList.append(elementOfGallery);
-  elementOfGallery.append(picture);
-
-  picture.setAttribute('src', image.url);
-  picture.setAttribute('width', '360px')
-  picture.setAttribute('height', '300px')
-  picture.setAttribute('alt', image.alt);
-  
-  elementOfGallery.style.listStyle = 'none'
-  
-// для удобного просмотра добавленных атрибутов 
-  console.log(picture)
+  galleryHTML += `
+    <li style="list-style: none;">
+      <img src="${image.url}" width="360px" height="300px" alt="${image.alt}">
+    </li>
+  `;
 }
+
+galleryList.insertAdjacentHTML('beforeend', galleryHTML);
